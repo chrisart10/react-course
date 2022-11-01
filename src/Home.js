@@ -15,6 +15,7 @@ const Home = () => {
 
     useEffect(()=>{
         console.log('this code run in useEffect')
+        console.log(blogs)
     })
 
     return (
