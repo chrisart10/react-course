@@ -4,21 +4,26 @@ import BlogsList from './Blogs';
 
 const Home = () => {
     const [blogs, SetBlogs] = useState(null)
+    const [isPending, SetIsPending] = useState(true)
 
-    useEffect(()=>{
-        fetch('http://localhost:8000/blogs')
-        .then(res => {
-            return res.json()
-        })
-        .then(data => {
-            console.log(data)
-            SetBlogs(data)
-        })
-    },[])
+    useEffect(() => {
+        setTimeout(() => {
+            fetch('http://localhost:8000/blogs')
+                .then(res => {
+                    return res.json()
+                })
+                .then(data => {
+                    console.log(data)
+                    SetBlogs(data)
+                    SetIsPending(false)
+                })
+        }, 1000)
+    }, [])
 
     return (
         <div className="home">
-           {blogs && <BlogsList
+            {isPending && <div>Loading ...</div>}
+            {blogs && <BlogsList
                 blogs={blogs}
                 title="All Blogs"
             />}
