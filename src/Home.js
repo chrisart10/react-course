@@ -1,5 +1,4 @@
 // TODO Seguir con video 16 de The net ninja react
-import { useState, useEffect } from 'react'
 import useFetch from './useFetch'
 import BlogsList from './Blogs';
 
